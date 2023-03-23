@@ -1,24 +1,26 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-
-#include <iostream>
-
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <bits/stdc++.h>
+#include <Shader/shader.h>
+#include <Geometry/geometry.h> 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
 
-// ��ũ�� ũ��
+
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
 int main()
 {
-    // glfw �ʱ�ȭ
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    // window ����
+   
     GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "songsmir GL", NULL, NULL);
     if (window == NULL)
     {
@@ -26,28 +28,33 @@ int main()
         glfwTerminate();
         return -1;
     }
-    // ���� �����쿡 context�� ����
+    
     glfwMakeContextCurrent(window);
-    // buffer�� ũ�Ⱑ ����� �� ȣ��Ǵ� �ݹ�
+    
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-    // glad �ε�
+  
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }
 
-    // ���� ����
+    Shader ourShader("C:\\Users\\vislab\\.vscode\\OpenGL\\resources\\VertexShader.vert","C:\\Users\\vislab\\.vscode\\OpenGL\\resources\\FragmentShader.frag");
+
+
+    
+
     while (!glfwWindowShouldClose(window))
     {
-        // �Է� ó��
+      
         processInput(window);
 
-        // ���� �ʱ�ȭ
+        
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
        
+        Draw_Star(ourShader,0.5);
         // ���� ���
         glfwSwapBuffers(window);
         glfwPollEvents();

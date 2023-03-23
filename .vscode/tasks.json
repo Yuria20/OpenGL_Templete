@@ -13,13 +13,13 @@
             "command": "g++",
             "args": [
                 "${workspaceRoot}/src/main.cpp",
-
                 "${workspaceRoot}/dependencies/GLAD/src/glad.c",
 
                 "-g",
                 "-I${workspaceRoot}/dependencies/GLFW/include",
                 "-I${workspaceFolder}/dependencies/GLAD/include",
                 "-I${workspaceFolder}/dependencies/GLM",
+                "-I${workspaceFolder}/dependencies/MYHEAD/include",
                 "-lopengl32",
                 "-L${workspaceRoot}/dependencies/GLFW/lib-mingw-w64",
                 "-static",

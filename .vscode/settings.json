@@ -1,3 +1,6 @@
 {
-    "cmake.sourceDirectory": "${workspaceFolder}/dependencies/GLM/glm"
+    "cmake.sourceDirectory": "${workspaceFolder}/dependencies/GLM/glm",
+    "files.associations": {
+        "cmath": "cpp"
+    }
 }
